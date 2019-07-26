@@ -2,5 +2,13 @@
   height: 100vh;
 }
 div.bodyContainer {
-  margin-top: 2rem;
+  margin-top: 1rem;
+}
+.tabs a {
+  color: #64b5f6;
+  font-weight: bold;
+  font-size: 18px;
+}
+.tabs .active {
+  background: inherit !important;
 }
