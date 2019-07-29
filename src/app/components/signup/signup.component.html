@@ -2,6 +2,9 @@
   <div class="row">
     <div class="col s10 offset-s1" id="panel">
       <h3 id="title">Sign Up</h3>
+      <div id="errorMsg" *ngIf="errorMessage">
+        <span>{{ errorMessage }}</span>
+      </div>
 
       <form
         class="col s12"
@@ -17,12 +20,30 @@
               formControlName="username"
             />
             <label for="signup_user_name">Username</label>
+            <span
+              class="helper-text error"
+              *ngIf="
+                !signupForm.controls['username'].valid &&
+                signupForm.controls['username'].touched
+              "
+            >
+              Username required and should be min 5 characters length
+            </span>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
             <input id="email" type="email" formControlName="email" />
             <label for="email">Email</label>
+            <span
+              class="helper-text error"
+              *ngIf="
+                !signupForm.controls['email'].valid &&
+                signupForm.controls['email'].touched
+              "
+            >
+              Email is required
+            </span>
           </div>
         </div>
         <div class="row">
@@ -33,9 +54,23 @@
               formControlName="password"
             />
             <label for="signup_password">Password</label>
+            <span
+              class="helper-text error"
+              *ngIf="
+                !signupForm.controls['password'].valid &&
+                signupForm.controls['password'].touched
+              "
+            >
+              Password must contain at least one letter, at least one number,
+              and be longer than 6 characters.
+            </span>
           </div>
         </div>
-        <button class="btn waves-effect waves-light" id="signupbtn">
+        <button
+          class="btn waves-effect waves-light"
+          id="signupbtn"
+          [disabled]="!signupForm.valid"
+        >
           Sign Up
         </button>
       </form>

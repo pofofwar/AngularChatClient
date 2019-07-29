@@ -12,3 +12,6 @@ div.bodyContainer {
 .tabs .active {
   background: inherit !important;
 }
+.auth-content {
+  height: auto;
+}
