@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/service/token.service';
 
 @Component({
   selector: 'app-streams',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./streams.component.css']
 })
 export class StreamsComponent implements OnInit {
+  token: string;
 
-  constructor() { }
+  constructor(private tokenService: TokenService) {}
 
   ngOnInit() {
+    this.token = this.tokenService.getToken();
+    console.log(this.token);
   }
-
 }

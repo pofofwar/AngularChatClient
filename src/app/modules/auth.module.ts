@@ -7,12 +7,9 @@ import { AuthTabsComponent } from '../components/auth-tabs/auth-tabs.component';
 import { LoginComponent } from '../components/login/login.component';
 import { SignupComponent } from '../components/signup/signup.component';
 import { AuthService } from '../service/auth.service';
-import { from } from 'rxjs';
 
 @NgModule({
   declarations: [AuthTabsComponent, LoginComponent, SignupComponent],
-  imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-  exports: [AuthTabsComponent, LoginComponent, SignupComponent],
-  providers: [AuthService]
+  imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule]
 })
 export class AuthModule {}

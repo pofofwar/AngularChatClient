@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/service/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { TokenService } from 'src/app/service/token.service';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -16,7 +18,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit() {
@@ -41,6 +44,7 @@ export class SignupComponent implements OnInit {
     this.showSpinner = true;
     this.authService.registerUser(this.signupForm.value).subscribe(
       data => {
+        this.tokenService.setToken(data.token);
         this.signupForm.reset();
         this.router.navigate(['streams']);
       },
