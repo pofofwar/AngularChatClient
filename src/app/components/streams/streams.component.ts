@@ -10,15 +10,9 @@ import { Router } from '@angular/router';
 export class StreamsComponent implements OnInit {
   token: string;
 
-  constructor(private tokenService: TokenService, private router: Router) {}
+  constructor(private tokenService: TokenService) {}
 
   ngOnInit() {
     this.token = this.tokenService.getToken();
-    console.log(this.token);
-  }
-
-  logout() {
-    this.tokenService.deleteToken();
-    this.router.navigate(['']);
   }
 }
