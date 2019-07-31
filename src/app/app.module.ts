@@ -7,6 +7,8 @@ import { AuthRoutingModule } from './modules/auth-routing.module';
 import { AuthModule } from './modules/auth.module';
 import { StreamsModule } from './modules/streams.module';
 import { StreamsRoutingModule } from './modules/streams-routing.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './service/token-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +19,10 @@ import { StreamsRoutingModule } from './modules/streams-routing.module';
     StreamsModule,
     StreamsRoutingModule
   ],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

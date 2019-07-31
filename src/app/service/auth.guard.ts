@@ -25,6 +25,7 @@ export class AuthGuard implements CanActivate {
     | UrlTree {
     const token = this.tokenService.getToken();
     if (token) {
+      //TODO: add token validation on BE
       return true;
     } else {
       this.router.navigate(['/']);
